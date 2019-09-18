@@ -22,18 +22,19 @@
 <body>
 <!-- 头部 -->
 <!--include 加载即使加载的文件不存在，也不影响主页面-->
-<?php include('./navbar.php')?>
+<?php include('./inc/navbar.php') ?>
 <!-- /头部 -->
 
 
 <div class="main-container container-fluid">
     <div class="page-container">
         <!-- Page Sidebar -->
-        <?php include('./sidebar.php')?>
+        <?php include('./inc/sidebar.php') ?>
         <!-- /Page Sidebar -->
 
         <!-- Page Content -->
         <div class="page-content">
+
             <!-- Page Breadcrumb -->
             <div class="page-breadcrumbs">
                 <ul class="breadcrumb">
