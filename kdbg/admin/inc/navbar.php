@@ -25,7 +25,7 @@
                                     <img src="/static/assets/admin/images/adam-jansen.jpg">
                                 </div>
                                 <section>
-                                    <h2><span class="profile"><span>admin</span></span></h2>
+                                    <h2><span class="profile"><span><?php echo $_SESSION['current_login_user']['user_name'] ?></span></span></h2>
                                 </section>
                             </a>
                             <!--Login Area Dropdown-->

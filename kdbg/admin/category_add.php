@@ -1,3 +1,40 @@
+<?php
+//引用公共函数文件
+require_once('../functions.php');
+//调用加检查登录的方法
+kd_check_login();
+
+//添加分类
+function add_cate(){
+    if (empty(trim($_POST['cate_name']))){
+        $GLOBALS['message'] = '必填条件不能为空';
+        return;
+    }
+    if (empty(trim($_POST['slug']))){
+        $GLOBALS['message'] = '必填条件不能为空';
+        return;
+    }
+
+    $cate_name = trim($_POST['cate_name']);
+    $slug = trim($_POST['slug']);
+
+    $sql = "insert into kd_category values (null,'{$cate_name}','{$slug}')";
+    $rows = kd_sql_execute($sql);
+    if ($rows >= 1){
+        $GLOBALS['message'] = '添加数据成功';
+    }else{
+        $GLOBALS['message'] = '添加数据失败';
+        return;
+    }
+}
+
+//判断是否是POST方式提交
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    add_cate();
+}
+
+
+?>
 <!DOCTYPE html>
 <html><head>
 	    <meta charset="utf-8">
@@ -41,9 +78,9 @@
                         <a href="#">系统</a>
                     </li>
                                         <li>
-                        <a href="#">栏目管理</a>
+                        <a href="#">分类管理</a>
                     </li>
-                                        <li class="active">添加栏目</li>
+                                        <li class="active">添加分类</li>
                                         </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
@@ -55,33 +92,25 @@
     <div class="col-lg-12 col-sm-12 col-xs-12">
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-blue">
-                <span class="widget-caption">新增栏目</span>
+                <span class="widget-caption">新增分类 <?php if (isset($message)) echo $message?></span>
             </div>
             <div class="widget-body">
                 <div id="horizontal-form">
-                    <form class="form-horizontal" role="form" action="" method="post">
+                    <form class="form-horizontal" role="form" action="./category_add.php" method="post">
                         <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">栏目名</label>
+                            <label for="username" class="col-sm-2 control-label no-padding-right">分类名</label>
                             <div class="col-sm-6">
-                                <input class="form-control" id="username" placeholder="" name="username" required="" type="text">
+                                <input class="form-control" id="cate_name" placeholder="" name="cate_name" required="" type="text">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
 
                         <div class="form-group">
-                            <label for="group_id" class="col-sm-2 control-label no-padding-right">上级栏目</label>
+                            <label for="username" class="col-sm-2 control-label no-padding-right">别名</label>
                             <div class="col-sm-6">
-                                <select name="group_id" style="width: 100%;">
-                                    <option selected="selected" value="8">顶级栏目</option>
-                                </select>
+                                <input class="form-control" id="slug" placeholder="" name="slug" required="" type="text">
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="group_desc" class="col-sm-2 control-label no-padding-right">栏目描述</label>
-                            <div class="col-sm-6">
-                                <textarea class="form-control" name="group_desc" id="group_desc" cols="30" rows="10"></textarea>
-                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
 
                         <div class="form-group">

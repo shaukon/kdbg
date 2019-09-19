@@ -1,3 +1,10 @@
+<?php
+//引用公共函数文件
+require_once('../functions.php');
+//调用加检查登录的方法
+kd_check_login();
+?>
+
 <!DOCTYPE html>
 <html><head>
 	    <meta charset="utf-8">
