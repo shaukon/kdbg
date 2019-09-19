@@ -1,4 +1,3 @@
-
 <div class="navbar">
     <div class="navbar-inner">
         <div class="navbar-container">
@@ -34,12 +33,12 @@
                                 <li class="username"><a>David Stevenson</a></li>
                                 <li class="dropdown-footer">
                                     <a href="/admin/user/logout.html">
-    退出登录
+                                        退出登录
                                     </a>
                                 </li>
                                 <li class="dropdown-footer">
                                     <a href="/admin/user/changePwd.html">
-    修改密码
+                                        修改密码
                                     </a>
                                 </li>
                             </ul>
