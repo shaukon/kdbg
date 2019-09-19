@@ -29,6 +29,7 @@
 <div class="main-container container-fluid">
     <div class="page-container">
         <!-- Page Sidebar -->
+        <?php $current_page = 'category_list'?>
         <?php include('./inc/sidebar.php') ?>
         <!-- /Page Sidebar -->
             <!-- Page Content -->
